@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { generateI18nConfig } from './i18n.config'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -7,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/ui',
-    // '@nuxtjs/i18n',
+    '@nuxtjs/i18n',
     '@vueuse/nuxt',
     'nuxt-auth-utils',
     'nuxt-viewport',
@@ -26,6 +27,7 @@ export default defineNuxtConfig({
     public: {
       api: '/api',
     },
+    clientUri: import.meta.env.CLIENT_URI,
   },
 
   future: {
@@ -41,6 +43,7 @@ export default defineNuxtConfig({
 
   hub: {
     database: true,
+    workers: true,
   },
 
   eslint: {
@@ -50,25 +53,7 @@ export default defineNuxtConfig({
     },
   },
 
-  // i18n: {
-  //   defaultLocale: 'fr-FR',
-  //   locales: [{
-  //     code: 'en-US',
-  //     name: 'English (United States)',
-  //     files: [
-  //       'en-US/common.ts',
-  //       'en-US/enums.ts',
-  //       'en-US/validation.ts',
-  //     ],
-  //   }, {
-  //     code: 'fr-FR',
-  //     name: 'Français (France)',
-  //     files: [
-  //       'fr-FR/common.ts',
-  //       'fr-FR/enums.ts',
-  //       'fr-FR/validation.ts',
-  //     ],
-  //   }],
-  //   langDir: 'locales',
-  // },
+  i18n: generateI18nConfig([
+    'theme.ts',
+  ]),
 })
