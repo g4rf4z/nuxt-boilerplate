@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const appConfig = useAppConfig()
 const i18nHead = useLocaleHead()
 
 useHead(() => ({
@@ -12,7 +13,9 @@ useHead(() => ({
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <UApp :toaster="appConfig.toaster" :tooltip="appConfig.tooltip">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>

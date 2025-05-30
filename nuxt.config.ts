@@ -23,6 +23,19 @@ export default defineNuxtConfig({
     '~/assets/css/main.css',
   ],
 
+  ui: {
+    theme: {
+      colors: [
+        'error',
+        'info',
+        'neutral',
+        'primary',
+        'success',
+        'warning',
+      ],
+    },
+  },
+
   runtimeConfig: {
     public: {
       api: '/api',
