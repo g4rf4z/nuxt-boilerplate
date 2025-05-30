@@ -1,27 +1,25 @@
 export default defineAppConfig({
   toaster: {
-    duration: 5000,
-    expand: true,
     position: 'top-right' as const,
+    expand: true,
+    duration: 5000,
   },
 
   tooltip: {
     delayDuration: 700,
-    disableClosingTrigger: false,
+    skipDelayDuration: 300,
     disableHoverableContent: false,
+    disableClosingTrigger: false,
     disabled: false,
     ignoreNonKeyboardFocus: false,
-    skipDelayDuration: 300,
   },
 
   ui: {
     colors: {
-      error: 'red',
-      info: 'violet',
-      neutral: 'slate',
-      primary: 'blue',
+      primary: 'green',
       success: 'green',
       warning: 'yellow',
+      error: 'red',
     },
   },
 })
