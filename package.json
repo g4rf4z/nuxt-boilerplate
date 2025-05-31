@@ -14,10 +14,10 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "db:generate": "drizzle-kit generate",
     "deps:clear": "rm -rf node_modules .nuxt",
     "deps:reset": "pnpm deps:clear && pnpm install && pnpm postinstall",
-    "cleaninstall": "rm -rf pnpm-lock.yaml && pnpm deps:reset",
-    "db:generate": "drizzle-kit generate"
+    "cleaninstall": "rm -rf pnpm-lock.yaml && pnpm deps:reset"
   },
   "dependencies": {
     "@nuxt/content": "3.5.1",
