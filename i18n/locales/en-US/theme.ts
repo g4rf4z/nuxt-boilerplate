@@ -1,4 +1,4 @@
 export default {
-  darkMode: 'Dark mode',
-  lightMode: 'Light mode',
+  DARK_MODE: 'Dark mode',
+  LIGHT_MODE: 'Light mode',
 }
