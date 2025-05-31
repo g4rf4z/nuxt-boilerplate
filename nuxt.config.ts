@@ -9,11 +9,19 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxtjs/i18n',
+    '@nuxthub/core',
+    '@pinia/colada-nuxt',
+    '@pinia/nuxt',
     '@vueuse/nuxt',
     'nuxt-auth-utils',
     'nuxt-viewport',
-    '@nuxthub/core',
   ],
+
+  imports: {
+    dirs: [
+      './store',
+    ],
+  },
 
   devtools: {
     enabled: true,
@@ -22,6 +30,11 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css',
   ],
+
+  colorMode: {
+    classSuffix: '',
+    storage: 'cookie',
+  },
 
   ui: {
     theme: {
