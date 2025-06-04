@@ -33,7 +33,7 @@ function _generateLocales(files: string[]): LocaleObject<string>[] {
 
 export function generateI18nConfig(files: string[]): NuxtI18nOptions {
   return {
-    baseUrl: import.meta.env.CLIENT_URI,
+    baseUrl: import.meta.env.CLIENT_URL,
     defaultLocale: 'en-US',
     strategy: 'prefix_except_default',
 

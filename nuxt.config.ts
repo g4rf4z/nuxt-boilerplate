@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     public: {
       api: '/api',
     },
-    clientUri: import.meta.env.CLIENT_URI,
+    clientUrl: import.meta.env.CLIENT_URL,
   },
 
   future: {
