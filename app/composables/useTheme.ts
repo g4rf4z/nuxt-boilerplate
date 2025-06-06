@@ -4,6 +4,11 @@ export function useTheme() {
   const isDark = useDark()
   const toggle = useToggle(isDark)
 
+  /**
+   * Based on work by Anthony Fu: https://antfu.me/ and Hooray Hu: https://github.com/hooray
+   * Sources: https://github.com/antfu/antfu.me/blob/main/src/logics/index.ts - https://github.com/vuejs/vitepress/pull/2347
+   */
+
   function toggleDark(event: MouseEvent): void {
     // @ts-expect-error: Experimental API
     const isAppearanceTransition = document.startViewTransition

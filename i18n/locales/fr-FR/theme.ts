@@ -1,4 +1,4 @@
 export default {
-  darkMode: 'Mode sombre',
-  lightMode: 'Mode clair',
+  TOGGLE_TO_DARK: 'Basculer en mode sombre',
+  TOGGLE_TO_LIGHT: 'Basculer en mode clair',
 }
