@@ -1,75 +1,64 @@
-# Nuxt Minimal Starter
+# Nuxt Boilerplate
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A modular, production-ready Nuxt boilerplate designed to quickly launch any kind of project with minimal configuration.
 
-## Setup
+## 📋 Prerequisites
 
-Make sure to install dependencies:
+- Node.js (version specified in .nvmrc)
+- pnpm (version 10.11.1 or higher)
 
+## ⚙️ Installation
+
+1. **Clone the repository**
 ```bash
-# npm
-npm install
+git clone
+```
 
-# pnpm
+2. **Install project dependencies**
+```bash
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
+3. **Start the development server**
 ```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The application will be available at `http://localhost:3000`.
 
-Build the application for production:
+## 📦 Scripts
 
-```bash
-# npm
-npm run build
+### Development
+- `pnpm dev`
+- `pnpm lint`
+- `pnpm lint:fix`
 
-# pnpm
-pnpm build
+### Build and preview
+- `pnpm build`
+- `pnpm generate`
+- `pnpm preview`
 
-# yarn
-yarn build
+### Dependencies management
+- `pnpm cleaninstall`
 
-# bun
-bun run build
-```
+## 📚 Documentation
 
-Locally preview production build:
+For more information on specific features, check out the following documentation:
+- [nuxt](https://nuxt.com/)
+- [@nuxt/ui](https://ui.nuxt.com/)
+- [@nuxt/content](https://content.nuxt.com/)
+- [@nuxtjs/i18n](https://i18n.nuxtjs.org/)
 
-```bash
-# npm
-npm run preview
+## 🤝 Contributing
 
-# pnpm
-pnpm preview
+Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-# yarn
-yarn preview
+## 📄 License
 
-# bun
-bun run preview
-```
+This project is licensed under the [MIT License](LICENSE).
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 👨‍💻 Author
+
+Built by Grégoire Pinte - [@g4rf4z](https://github.com/g4rf4z).
+
+---
