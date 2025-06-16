@@ -26,19 +26,19 @@ pnpm dev
 
 The application will be available at `http://localhost:3000`.
 
-## 📦 Available Scripts
+## 📦 Scripts
 
 ### Development
 - `pnpm dev`
 - `pnpm lint`
 - `pnpm lint:fix`
 
-### Build & Preview
+### Build and preview
 - `pnpm build`
 - `pnpm generate`
 - `pnpm preview`
 
-### Dependencies Management
+### Dependencies management
 - `pnpm cleaninstall`
 
 ## 📚 Documentation
@@ -59,6 +59,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 👨‍💻 Author
 
-Grégoire Pinte - [@g4rf4z](https://github.com/g4rf4z)
+Built by Grégoire Pinte - [@g4rf4z](https://github.com/g4rf4z).
 
 ---
