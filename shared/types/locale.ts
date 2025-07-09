@@ -1,7 +1,7 @@
 export const locale = {
-  'fr-FR': 'fr-FR',
   'en-US': 'en-US',
   'es-ES': 'es-ES',
+  'fr-FR': 'fr-FR',
 } as const
 
 export const locales = Object.values(locale)
