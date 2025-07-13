@@ -1,5 +1,14 @@
-import type { CompactOptions, PlainObject } from '@/types'
+import type { PlainObject } from '@/types'
 import { cloneDeep, isEmpty, isEqual, isPlainObject, merge } from 'lodash-es'
+
+interface CompactOptions {
+  array?: boolean
+  boolean?: boolean
+  null?: boolean
+  object?: boolean
+  string?: boolean
+  undefined?: boolean
+}
 
 /**
  * Verifies if a value is empty (array, object, string, null, undefined)
