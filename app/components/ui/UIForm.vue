@@ -1,96 +1,83 @@
 <script setup lang="ts">
+import type { FormError, FormSubmitEvent } from '@nuxt/ui'
 import type { AnyZodObject, ZodEffects } from 'zod'
 
 interface Props {
-  schema: AnyZodObject | ZodEffects<AnyZodObject> | ZodEffects<ZodEffects<AnyZodObject>>
+  schema: AnyZodObject | ZodEffects<AnyZodObject>
   data: Record<string, unknown>
   onSubmit: (data: Record<string, unknown>) => Promise<void>
-  onSubmitError?: ({ error, formRef }: { error: unknown, formRef: any }) => void
-  onReset?: () => void
+  onError?: (context: { error: unknown, errors: FormError[] }) => void
+}
+
+interface Exposed {
+  readonly isLoading: Ref<boolean>
+  submit: () => Promise<void>
+  validate: () => Promise<Record<string, unknown>>
+  clear: () => void
+  setErrors: (errors: FormError[]) => void
 }
 
 const props = defineProps<Props>()
-const nuxtApp = useNuxtApp()
 
-const { registerFormValidation, unregisterFormValidation, validateAllForms } = useForm()
-const id = useId()
-const formRef = useTemplateRef('formRef')
+const formRef = ref()
+const isLoading = ref(false)
 
-const isLoading = useState<string[]>('UIForm.submitLoading', (): string[] => [])
-const isFormLoading = computed(() => isLoading.value.includes(id))
+async function _handleSubmit(event: FormSubmitEvent<Record<string, any>>): Promise<void> {
+  if (isLoading.value)
+    return
 
-const { formatApiError } = useApiError()
-
-registerFormValidation(id, async () => {
   try {
-    await formRef.value?.validate()
-    return true
-  }
-  catch {
-    return false
-  }
-})
-
-async function safeSubmit(data: Record<string, unknown>) {
-  try {
-    isLoading.value.push(id)
-    await props.onSubmit(data)
-    removeItemFromArray(isLoading.value, id)
+    isLoading.value = true
+    await props.onSubmit(event.data)
   }
   catch (error) {
-    console.error(error)
-    formatApiError(error, formRef.value || undefined)
-    removeItemFromArray(isLoading.value, id)
+    _handleError(error, [])
+  }
+  finally {
+    isLoading.value = false
   }
 }
 
-const isMounted = ref(false)
-
-onMounted(() => {
-  isMounted.value = true
-})
-
-onUnmounted(() => {
-  isMounted.value = false
-  unregisterFormValidation(id)
-})
-
-nuxtApp.hook('form:reset', () => {
-  if (!isMounted.value)
-    return
-  if (props.onReset)
-    props.onReset()
-  formRef?.value?.clear()
-})
-
-nuxtApp.hook('form:submit', async () => {
-  if (!isMounted.value)
-    return
-
-  // TODO: Improve this so the validation of all the form won't be done from every form (because atm, if we have multiple UIForm components mounted, the validation will be done from every form)
-  const allValid = await validateAllForms()
-  if (allValid) {
-    safeSubmit(props.data)
+function _handleError(error: unknown, errors: FormError[] = []): void {
+  if (props.onError) {
+    props.onError({ error, errors })
   }
-})
-
-function submit() {
-  safeSubmit(props.data)
 }
 
-defineExpose({
-  isLoading: isFormLoading,
+async function submit(): Promise<void> {
+  await formRef.value?.submit()
+}
+
+async function validate(): Promise<Record<string, unknown>> {
+  return await formRef.value?.validate()
+}
+
+function clear(): void {
+  formRef.value?.clear()
+}
+
+function setErrors(errors: FormError[]): void {
+  formRef.value?.setErrors(errors)
+}
+
+defineExpose<Exposed>({
+  isLoading: computed(() => isLoading.value),
   submit,
-  formRef,
+  validate,
+  clear,
+  setErrors,
 })
 </script>
 
 <template>
-  <UForm ref="formRef" :schema="schema" :state="data" class="space-y-4" @submit="submit">
+  <UForm
+    ref="formRef"
+    :schema="schema"
+    :state="data"
+    class="space-y-4"
+    @submit="_handleSubmit"
+    @error="_handleError"
+  >
     <slot />
-    <UIButton
-      type="submit"
-      class="hidden"
-    />
   </UForm>
 </template>
