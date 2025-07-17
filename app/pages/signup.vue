@@ -7,5 +7,5 @@ definePageMeta({
 </script>
 
 <template>
-  <Signup class="mt-10 mb-10 md:mb-auto" />
+  <AuthSignup class="mt-10 mb-10 md:mb-auto" />
 </template>
