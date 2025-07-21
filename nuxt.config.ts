@@ -55,9 +55,6 @@ export default defineNuxtConfig({
     clientUrl: import.meta.env.CLIENT_URL,
   },
 
-  future: {
-    compatibilityVersion: 4,
-  },
   compatibilityDate: '2024-11-01',
 
   nitro: {
