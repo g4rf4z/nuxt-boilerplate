@@ -3,4 +3,6 @@ export const provider = {
   local: 'local',
 } as const
 
-export type Provider = typeof provider[keyof typeof provider]
+export const providers = Object.values(provider)
+
+export type Provider = (typeof provider)[keyof typeof provider]

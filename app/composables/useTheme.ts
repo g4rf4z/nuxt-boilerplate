@@ -49,6 +49,7 @@ export function useTheme() {
             pseudoElement: isDark.value
               ? '::view-transition-old(root)'
               : '::view-transition-new(root)',
+            fill: 'forwards',
           },
         )
       })

@@ -11,5 +11,5 @@ export type Locale = (typeof locale)[keyof typeof locale]
 export function isLocaleValid(value?: string | null): value is Locale {
   if (!value)
     return false
-  return locales.includes(value as any)
+  return locales.includes(value as Locale)
 }

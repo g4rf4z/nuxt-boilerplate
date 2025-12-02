@@ -5,4 +5,4 @@ export const currency = {
 
 export const currencies = Object.values(currency)
 
-export type Currency = typeof currency[keyof typeof currency]
+export type Currency = (typeof currency)[keyof typeof currency]

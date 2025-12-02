@@ -1,7 +1,7 @@
 import type { TypeOf, ZodObject } from 'zod'
 
-export function getValues<T extends Record<string, any>>(obj: T) {
-  return Object.values(obj) as [(typeof obj)[keyof T]]
+export function constObjectToArray<T extends Record<string, string>>(obj: T): Array<T[keyof T]> {
+  return Object.values(obj) as Array<T[keyof T]>
 }
 
 export function withPasswordValidation<T extends ZodObject<any>>(
